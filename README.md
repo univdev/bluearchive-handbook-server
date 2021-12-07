@@ -10,3 +10,4 @@
 - [express](https://github.com/expressjs/express)
 - [gulp](https://github.com/gulpjs/gulp)
 - [jsdom](https://github.com/jsdom/jsdom)
+- [Node NLP](https://www.npmjs.com/package/node-nlp)
