@@ -5,6 +5,6 @@
 ### API
 - [스킬 목록](./helpers/Skill/README.md)
 ### Packages
-- puppeteer
-- express
-- gulp
+- [puppeteer](https://github.com/puppeteer/puppeteer)
+- [express](https://github.com/expressjs/express)
+- [gulp](https://github.com/gulpjs/gulp)
