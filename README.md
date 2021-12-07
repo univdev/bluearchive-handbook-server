@@ -3,7 +3,8 @@
 ## 개요
 블루아카이브 초심자를 위한 가이드를 제공하는 어플리케이션의 서버입니다.
 ### API
-- [스킬 목록](./helpers/Skill/README.md)
+- [자연어 처리](./command)
+- [스킬 목록](./helpers/Skill)
 ### Packages
 - [puppeteer](https://github.com/puppeteer/puppeteer)
 - [express](https://github.com/expressjs/express)
