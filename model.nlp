@@ -1,0 +1,516 @@
+{
+  "settings": {
+    "languages": [
+      "ko"
+    ],
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "ko"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "ko": {
+        "settings": {
+          "locale": "ko",
+          "trainByDomain": false,
+          "tag": "domain-manager-ko",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "강화": {
+            "intent": "situation.upgrade",
+            "domain": "default"
+          },
+          "스킬,이오,힐끗거리": {
+            "intent": "character.iori.skill",
+            "domain": "default"
+          },
+          "이오,주무시,힐끗거리": {
+            "intent": "character.iori.weapon",
+            "domain": "default"
+          },
+          "강화,이오,힐끗거리": {
+            "intent": "character.iori.upgrade",
+            "domain": "default"
+          },
+          "슌,스킬": {
+            "intent": "character.shun.skill",
+            "domain": "default"
+          },
+          "슌,주무시": {
+            "intent": "character.shun.weapon",
+            "domain": "default"
+          },
+          "강화,슌": {
+            "intent": "character.shun.upgrade",
+            "domain": "default"
+          },
+          "강화,돼써,모으,스며들,싯멀게지,어떻,재료": {
+            "intent": "guide.upgrade",
+            "domain": "default"
+          },
+          "default": {
+            "intent": "",
+            "domain": "master_domain"
+          }
+        },
+        "intentDict": {
+          "situation.upgrade": "default",
+          "character.iori.skill": "default",
+          "character.iori.weapon": "default",
+          "character.iori.upgrade": "default",
+          "character.shun.skill": "default",
+          "character.shun.weapon": "default",
+          "character.shun.upgrade": "default",
+          "guide.upgrade": "default",
+          "": "master_domain"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "강화",
+            "intent": "situation.upgrade"
+          },
+          {
+            "domain": "default",
+            "utterance": "이오리 스킬",
+            "intent": "character.iori.skill"
+          },
+          {
+            "domain": "default",
+            "utterance": "이오리 무기",
+            "intent": "character.iori.weapon"
+          },
+          {
+            "domain": "default",
+            "utterance": "이오리 강화",
+            "intent": "character.iori.upgrade"
+          },
+          {
+            "domain": "default",
+            "utterance": "슌 스킬",
+            "intent": "character.shun.skill"
+          },
+          {
+            "domain": "default",
+            "utterance": "슌 무기",
+            "intent": "character.shun.weapon"
+          },
+          {
+            "domain": "default",
+            "utterance": "슌 강화",
+            "intent": "character.shun.upgrade"
+          },
+          {
+            "domain": "default",
+            "utterance": "강화 재료는 어떻게 모으면 돼?",
+            "intent": "guide.upgrade"
+          },
+          {
+            "domain": "master_domain",
+            "utterance": "default",
+            "intent": ""
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "ko",
+              "tag": "nlu-ko",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "강화": 1,
+              "이오": 1,
+              "힐끗거리": 1,
+              "스킬": 1,
+              "주무시": 1,
+              "슌": 1,
+              "재료": 1,
+              "어떻": 1,
+              "싯멀게지": 1,
+              "모으": 1,
+              "스며들": 1,
+              "돼써": 1,
+              "default": 1
+            },
+            "intents": {
+              "situation.upgrade": 1,
+              "character.iori.skill": 1,
+              "character.iori.weapon": 1,
+              "character.iori.upgrade": 1,
+              "character.shun.skill": 1,
+              "character.shun.weapon": 1,
+              "character.shun.upgrade": 1,
+              "guide.upgrade": 1,
+              "": 1
+            },
+            "intentFeatures": {
+              "situation.upgrade": {
+                "강화": 1
+              },
+              "character.iori.skill": {
+                "이오": 1,
+                "힐끗거리": 1,
+                "스킬": 1
+              },
+              "character.iori.weapon": {
+                "이오": 1,
+                "힐끗거리": 1,
+                "주무시": 1
+              },
+              "character.iori.upgrade": {
+                "이오": 1,
+                "힐끗거리": 1,
+                "강화": 1
+              },
+              "character.shun.skill": {
+                "슌": 1,
+                "스킬": 1
+              },
+              "character.shun.weapon": {
+                "슌": 1,
+                "주무시": 1
+              },
+              "character.shun.upgrade": {
+                "슌": 1,
+                "강화": 1
+              },
+              "guide.upgrade": {
+                "강화": 1,
+                "재료": 1,
+                "어떻": 1,
+                "싯멀게지": 1,
+                "모으": 1,
+                "스며들": 1,
+                "돼써": 1
+              },
+              "": {
+                "default": 1
+              }
+            },
+            "featuresToIntent": {
+              "강화": [
+                "situation.upgrade",
+                "character.iori.upgrade",
+                "character.shun.upgrade",
+                "guide.upgrade"
+              ],
+              "이오": [
+                "character.iori.skill",
+                "character.iori.weapon",
+                "character.iori.upgrade"
+              ],
+              "힐끗거리": [
+                "character.iori.skill",
+                "character.iori.weapon",
+                "character.iori.upgrade"
+              ],
+              "스킬": [
+                "character.iori.skill",
+                "character.shun.skill"
+              ],
+              "주무시": [
+                "character.iori.weapon",
+                "character.shun.weapon"
+              ],
+              "슌": [
+                "character.shun.skill",
+                "character.shun.weapon",
+                "character.shun.upgrade"
+              ],
+              "재료": [
+                "guide.upgrade"
+              ],
+              "어떻": [
+                "guide.upgrade"
+              ],
+              "싯멀게지": [
+                "guide.upgrade"
+              ],
+              "모으": [
+                "guide.upgrade"
+              ],
+              "스며들": [
+                "guide.upgrade"
+              ],
+              "돼써": [
+                "guide.upgrade"
+              ],
+              "default": [
+                ""
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "ko",
+                "tag": "nlu-ko",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "강화",
+                "이오",
+                "힐끗거리",
+                "스킬",
+                "주무시",
+                "슌",
+                "재료",
+                "어떻",
+                "싯멀게지",
+                "모으",
+                "스며들",
+                "돼써",
+                "default"
+              ],
+              "intents": [
+                "situation.upgrade",
+                "character.iori.skill",
+                "character.iori.weapon",
+                "character.iori.upgrade",
+                "character.shun.skill",
+                "character.shun.weapon",
+                "character.shun.upgrade",
+                "guide.upgrade",
+                ""
+              ],
+              "perceptrons": [
+                [
+                  10.614500999450684,
+                  -6.981955051422119,
+                  -6.981955051422119,
+                  -0.25252416729927063,
+                  -0.20795297622680664,
+                  -13.881916046142578,
+                  -2.3323066234588623,
+                  -2.3323066234588623,
+                  -2.3323066234588623,
+                  -2.3323066234588623,
+                  -2.3323066234588623,
+                  -2.3323066234588623,
+                  -3.3546061515808105,
+                  3.384131982691927
+                ],
+                [
+                  -5.805121898651123,
+                  3.7215964794158936,
+                  3.7215964794158936,
+                  8.469198226928711,
+                  -5.805431842803955,
+                  -6.829442977905273,
+                  -0.01484170462936163,
+                  -0.01484170462936163,
+                  -0.01484170462936163,
+                  -0.01484170462936163,
+                  -0.01484170462936163,
+                  -0.01484170462936163,
+                  -0.12027723342180252,
+                  -1.6352755880586956
+                ],
+                [
+                  -5.805594444274902,
+                  3.7319931983947754,
+                  3.7319931983947754,
+                  -5.804540634155273,
+                  8.469256401062012,
+                  -6.809227466583252,
+                  -0.024901453405618668,
+                  -0.024901453405618668,
+                  -0.024901453405618668,
+                  -0.024901453405618668,
+                  -0.024901453405618668,
+                  -0.024901453405618668,
+                  -0.1559656709432602,
+                  -1.6556340913301104
+                ],
+                [
+                  5.711423873901367,
+                  6.9306159019470215,
+                  6.9306159019470215,
+                  -8.281106948852539,
+                  -8.278488159179688,
+                  -2.6337990760803223,
+                  -0.5081371665000916,
+                  -0.5081371665000916,
+                  -0.5081371665000916,
+                  -0.5081371665000916,
+                  -0.5081371665000916,
+                  -0.5081371665000916,
+                  -0.1040906086564064,
+                  -5.490764901939431
+                ],
+                [
+                  -4.740832805633545,
+                  -4.695281982421875,
+                  -4.695281982421875,
+                  9.541755676269531,
+                  -4.740938663482666,
+                  4.891915798187256,
+                  -0.04129096120595932,
+                  -0.04129096120595932,
+                  -0.04129096120595932,
+                  -0.04129096120595932,
+                  -0.04129096120595932,
+                  -0.04129096120595932,
+                  -0.3527168333530426,
+                  -0.15025453629613195
+                ],
+                [
+                  -4.739721775054932,
+                  -4.683994770050049,
+                  -4.683994770050049,
+                  -4.739420413970947,
+                  9.543031692504883,
+                  4.914600372314453,
+                  -0.06288091838359833,
+                  -0.06288091838359833,
+                  -0.06288091838359833,
+                  -0.06288091838359833,
+                  -0.06288091838359833,
+                  -0.06288091838359833,
+                  -0.4028138518333435,
+                  -0.17412533538632155
+                ],
+                [
+                  5.718766689300537,
+                  -1.8060897588729858,
+                  -1.8060897588729858,
+                  -7.939101696014404,
+                  -7.937127113342285,
+                  13.312580108642578,
+                  -0.6487433910369873,
+                  -0.6487433910369873,
+                  -0.6487433910369873,
+                  -0.6487433910369873,
+                  -0.6487433910369873,
+                  -0.6487433910369873,
+                  -0.24768982827663422,
+                  -5.21610037457961
+                ],
+                [
+                  0.15168267488479614,
+                  -0.5261139869689941,
+                  -0.5261139869689941,
+                  -0.12437760084867477,
+                  -0.10387693345546722,
+                  -0.628439724445343,
+                  2.3809518814086914,
+                  2.3809518814086914,
+                  2.3809518814086914,
+                  2.3809518814086914,
+                  2.3809518814086914,
+                  2.3809518814086914,
+                  -0.17504644393920898,
+                  -0.15168035745973088
+                ],
+                [
+                  -2.973820686340332,
+                  -0.8894029855728149,
+                  -0.8894029855728149,
+                  -1.195166826248169,
+                  -1.1951217651367188,
+                  -1.778732419013977,
+                  -0.18031229078769684,
+                  -0.18031229078769684,
+                  -0.18031229078769684,
+                  -0.18031229078769684,
+                  -0.18031229078769684,
+                  -0.18031229078769684,
+                  11.311824798583984,
+                  2.9738560971019385
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "ko",
+        "강화"
+      ],
+      [
+        "ko",
+        "이오리 스킬"
+      ],
+      [
+        "ko",
+        "이오리 무기"
+      ],
+      [
+        "ko",
+        "이오리 강화"
+      ],
+      [
+        "ko",
+        "슌 스킬"
+      ],
+      [
+        "ko",
+        "슌 무기"
+      ],
+      [
+        "ko",
+        "슌 강화"
+      ],
+      [
+        "ko",
+        "강화 재료는 어떻게 모으면 돼?"
+      ],
+      [
+        "ko",
+        ""
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {}
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}
