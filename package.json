@@ -1,0 +1,40 @@
+{
+  "name": "bluearchive-wiki-server",
+  "version": "1.0.0",
+  "description": "블루아카이브 크롤링 서버",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/univdev/bluearchive-wiki-server.git"
+  },
+  "keywords": [
+    "블루아카이브",
+    "크롤링",
+    "블루아카이브",
+    "크롤링"
+  ],
+  "author": "박찬영 pcydeveloper@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/univdev/bluearchive-wiki-server/issues"
+  },
+  "homepage": "https://github.com/univdev/bluearchive-wiki-server#readme",
+  "dependencies": {
+    "@babel/core": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "babel-preset-es2015": "^6.24.1",
+    "browser-sync": "^2.27.7",
+    "express": "^4.17.1",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-file-cache": "^0.0.1",
+    "gulp-nodemon": "^2.5.0",
+    "gulp-util": "^3.0.8",
+    "gulp-webpack": "^1.5.0",
+    "puppeteer": "^12.0.1"
+  }
+}
