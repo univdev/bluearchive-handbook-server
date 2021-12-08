@@ -1,3 +1,4 @@
+const e = require('express');
 const fs = require('fs');
 const isDirectory = require('is-directory');
 const root = __dirname;
@@ -14,11 +15,12 @@ const root = __dirname;
       const isWordFile = file.indexOf('words') === 0; // 워드파일의 경우
       const content = await readFile(filePath);
       const rows = content.split('\n');
-      prefix.push(rows);
+      if (isWordFile) {
+        prefix.push(rows);
+        const questionPrefix = getAnswerPrefixes(prefix);
+        console.log(questionPrefix);
+      }
     }
-    const prefixes = [];
-    getPrefixes(prefix, [], prefixes);
-    // console.log(prefixes);
     for (let i = 0; i < directories.length; i += 1) {
       const file = directories[i];
       const directoryPath = `${path}/${file}`;
@@ -45,17 +47,23 @@ const root = __dirname;
     });
   };
 
-  const getPrefixes = (words = [], steps = [], result = []) => {
-    console.log(words, steps);
-    for (let i = 0; i < words.length; i += 1) {
-      const current = words[i];
-      const next = words[i + 1] || null;
-      if (isStart) steps = [];
-      for (let j = 0; j < current.length; j += 1) {
-        const item = current[j];
-        console.log(item);
+  const getAnswerPrefixes = (words = [], index = 0) => {
+    const items = words[index];
+    const isNext = words[index + 1] || false;
+    const result = [];
+    for (let i = 0; i < items.length; i += 1) {
+      const word = items[i];
+      if (isNext) {
+        const children = getAnswerPrefixes(words, index + 1);
+        for (let j = 0; j < children.length; j += 1) {
+          const child = children[j];
+          result.push(`${word} ${child}`);
+        }
+      } else {
+        return items;
       }
     }
+    return result;
   }
 
   const files = await readDir(root);
