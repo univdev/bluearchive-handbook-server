@@ -1,9 +1,23 @@
 const { NlpManager } = require('node-nlp');
-
 class Nlp {
-  static manager = new NlpManager({ languages: ['ko'] });
+  static manager = new NlpManager({ locales: ['ko'] });
   static getManager() {
     return this.manager;
+  }
+  static setEntity(category, delegate, options = [], languages = ['ko']) {
+    const manager = this.getManager();
+    manager.addNamedEntityText(category, delegate, languages, options);
+  }
+  static setEntities(entities) {
+    for (let i = 0; i < entities.length; i += 1) {
+      const entity = entities[i];
+      const keys = Object.keys(entity);
+      for (let j = 0; j < keys.length; j += 1) {
+        const key = keys[j];
+        const options = entity[key];
+        this.setEntity(key, key, options);
+      }
+    }
   }
   static learn(language, question, answer) {
     const manager = this.getManager();

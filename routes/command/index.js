@@ -7,11 +7,11 @@ Router.get('/command', async (req, res) => {
   try {
     const { script } = req.query;
     if (!script) throw new ErrorManager(400, '스크립트를 입력해주세요.');
-    const response = await Nlp.ask(script);
-    return res.json(response);
+    const entity = await Nlp.ask(script);
+    return res.json(entity);
   } catch (e) {
     const { message, code } = e;
-    return res.status(code).json({ message });
+    return res.status(code || 500).json({ message });
   }
 });
 

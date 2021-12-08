@@ -10,7 +10,10 @@ app.use(routes);
 
 const learnCommands = async () => {
   const questions = await commands();
+  const entities = [...questions].map((q) => q.entities);
+  console.log(questions[0]);
   Nlp.learnAllData(questions);
+  Nlp.setEntities(entities);
   await Nlp.train();
 }
 

@@ -40,7 +40,7 @@ const command = async () => {
     }
     return result;
   }
-  const scanFiles = async (path, chain = [], answer = [], result = []) => {
+  const scanFiles = async (path, chain = [], answer = [], result = [], entities = {}) => {
     const children = await readDir(path);
     const directories = [...children].filter((i) => i.indexOf('.') <= -1);
     const files = [...children].filter((i) => i.indexOf('.') > -1);
@@ -53,11 +53,26 @@ const command = async () => {
       const content = await readFile(filePath);
       const rows = content.split('\n');
       if (isNamesFile) {
-        chain.push(rows);
+        const currentAnswer = [...answer];
+        const lastAnswer = currentAnswer[currentAnswer.length - 1];
+        const isVariable = (lastAnswer).indexOf(':') === 0;
+        if (isVariable) {
+          const variableName = lastAnswer.slice(1);
+          entities[variableName] = rows;
+          chain.push([`%${variableName}%`]);
+        } else {
+          chain.push(rows);
+        }
       }
       if (isQuestionFile) {
         const chainQuestions = getAnswerPrefixes(chain, 0);
-        const questions = getAnswerPrefixes([chainQuestions, rows], 0).map((q) => ({ chain: q, answer: answer.join('.') }));
+        const questions = getAnswerPrefixes([chainQuestions, rows], 0).map((q) => {
+          return {
+            chain: q,
+            answer: answer.join('.'),
+            entities,
+          };
+        });
         result.push(...questions);
       }
     }
@@ -65,7 +80,7 @@ const command = async () => {
       const directory = directories[i];
       const directoryPath = `${path}/${directory}`;
       answer.push(directory);
-      await scanFiles(directoryPath, chain, answer, result);
+      await scanFiles(directoryPath, chain, answer, result, entities);
     }
   };
   const questions = [];
